@@ -1,0 +1,1309 @@
+*{
+    margin: 0;
+    padding: 0;
+    transition: 300ms;
+    box-sizing: border-box;
+}
+    
+:root {
+    --tamanhoHeader: 30%;
+    --tamanhoTela: 50%;
+    --corTema: #ff5252;
+    --corPath: #ff5252de;
+    --corFundo: #ffffff;
+    --corFundo2: #ffffff;
+    --corLetra: black;
+    --corLetra2: black;
+    --corApenasTemaClaro: #d3d3d3;
+    --corApenasTemaEscuro: gray;
+    --itemDesativado: #7272726b;
+    --itemAtivado: #ffffff;
+    --sombra: 1px 1px 0px rgba(0, 0, 0, 0.294);
+    --corBackground: #dddcdc;
+}
+
+    
+body{
+    color: #353434;
+    background-color: rgb(240, 240, 240);
+    font-family: 'popins', sans-serif;
+    overflow: hidden;
+}
+div#background{
+    position: absolute;
+    background-color: var(--corBackground);
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    overflow: hidden;
+}
+#background h2{
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    color: var(--corPath);
+}
+
+#background .fa-money-bill-wave{
+    position: absolute;
+    top: 80px;
+    left: 90px;
+    font-size: 8em;
+    color: rgba(128, 128, 128, 0.274);
+}
+svg.blobSvg{
+    position: absolute;
+    width: 135vw;
+    height: 180vh;
+    z-index: 0;
+    overflow: hidden;
+}
+#blob1{
+    left: -38%;
+    top: -7%;
+}
+#blob2{
+    right: -37%;
+    bottom: -44%;
+}
+svg.blobSvg path{
+    fill: rgba(0, 0, 0, 0.075);
+}
+div#meuContainer{
+    position: relative;
+    box-sizing: border-box;
+    max-width: 500px;
+    min-width: 320px;
+    height: 100vh;
+    margin: auto;
+    background-color: var(--corTema);
+    outline: 2px solid var(--corFundo);
+    overflow: hidden;
+}
+div.overlay{
+    position: absolute;
+    display: none;
+    top: 0;
+    left: 0;
+    background-color: #333;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    opacity: 0.7;
+}
+
+div.alert{
+    position: absolute;
+    left: 50%;
+    top: -25%;
+    transform: translate(-50%, 0);
+    width: 90%;
+    font-weight: bold;
+    z-index: 10;
+    box-shadow: var(--sombra);
+}
+.alert-dark {
+    color: #ffffff;
+    background-color: #1e1e1e;
+    border-color: #bcbebf;
+    box-shadow: var(--sombra);
+}
+header#headerPrincipal{
+    position: relative;
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--corTema);
+    box-shadow: 1px 4px 3px rgba(0, 0, 0, 0.294);
+}
+svg#rodape{
+    position: absolute;
+    bottom: -1%;
+    z-index: 0;
+}
+svg#rodape path{
+    fill: var(--corPath);
+}
+div#total{
+    width: 60%;
+    height: 80%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    z-index: 1;
+}
+div#total h2{
+    display: block;
+    color: white;
+    font-size: 2em;
+    text-shadow: var(--sombra)
+}
+#valorDiv{
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+}
+
+#valorDiv #valorTela{
+    color: #ffff;
+    font-size: 3.5em;
+    text-shadow: var(--sombra)
+}
+
+nav{
+    width: 100%;
+    height: 20%;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-end;
+    min-height: 50px;
+    z-index: 1;
+}
+nav > input[type="radio"]{
+    display: none;
+}
+nav > label{
+    cursor: pointer;
+    color: rgb(221, 221, 221);
+    border-bottom: 3px solid var(--corTema);
+    font-size: 1.3em;
+    text-transform: lowercase;
+    width: 100%;
+    padding: 5px;
+    text-align: center;
+    font-weight: 500;
+    transition: all 350ms;
+}
+nav > input[type="radio"]:checked + label, nav > label:hover{
+    color: #ffff;
+    font-weight: 700;
+    font-size: 1.4em;
+    border-bottom: 3px solid #ffff;
+    padding: 5px 5px 2px 5px;
+    background-image: linear-gradient(to top, rgba(255, 255, 255, 0.178), rgba(255, 255, 255, 0));
+}
+
+main{
+    margin-top: 0px!important;
+    overflow: hidden;
+    display: flex;
+    height: 70vh;
+}
+.conteudoPrincipal{
+    margin-top: 10px;
+    display: none;
+    overflow: auto;
+    height: 59vh;
+    outline: none;
+}
+main, .conteudoPrincipal{
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
+    background-color: var(--corFundo);
+    
+}
+#sectionLista {
+    display: flex;
+    padding-top: 3px;
+}
+#sectionLista > h3.dataDaLista{
+    align-self: flex-start;
+    margin-left: 10px;
+    color: gray;
+    font-weight: bold;
+}
+    
+/* ------------------------------------------------------ */
+ul.lista, ul#listaAdicionarInscricoes{
+    box-sizing: border-box;
+    width: 100%;
+    height: fit-content;
+    padding: 0px;
+    list-style: none;
+    z-index: 1;
+}
+p.aviso{
+    display: block;
+    color: rgba(128, 128, 128, 0.562);
+    font-size: 1.5em;
+    text-align: center;
+    margin: 20px 0px 20px 0px;
+}
+ul.lista li{
+    opacity: 0;
+    box-sizing: border-box;
+    width: 100%;
+    height: 60px;
+    color: var(--corLetra2);
+    background-color: var(--corFundo);
+    border-left: 4px solid var(--corPath);
+    padding: 15px 10px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    overflow: hidden;
+
+}
+li p{
+    margin-bottom: 0px;
+}
+li p.classe{
+    color: gray;
+    font-size: 0.6em;
+    font-weight: normal;
+    width: max-content;
+
+}
+.liInfo{
+    width: max-content;
+}
+li p.nome{
+    width: inherit;
+    margin-bottom: -5px;
+}
+li p.perda {
+    color: #ff5252;
+    text-align: end;
+    width: max-content;
+}
+li p.lucro {
+    color: #49c545;
+    text-align: end;
+    width: max-content;
+}
+/* ------------------------------------------------------ */
+
+
+
+
+
+
+/* ------------------------------------------------------ */
+#sectionInscricoesVazia{
+    display: block;
+}
+#inscricoesHeader{
+    background-color: var(--corPath);
+    border: 2px solid var(--corLetra2);
+    color: var(--corLetra2);
+    border-radius: 5px;
+    height: 25%;
+    display: none;
+    padding: 10px;
+    text-align: center;
+    box-shadow: var(--sombra);
+}
+
+ul#listaAdicionarInscricoes li{
+    width: 100%;
+    height: 95px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--corFundo);
+    border: 1px solid var(--corApenasTemaClaro);
+    border-bottom: 1px solid var(--corApenasTemaEscuro);
+    border-right: none;
+    margin-top: 10px;
+    box-shadow: var(--sombra);
+}
+div.inscricoesConteudo{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    color: var(--corLetra2);
+    transition: 40ms;
+}
+div.inscricoesConteudo:hover{
+    color: white;
+}
+.inscricoesConteudo h4{
+    width: 50%;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+li.liInscricoes:hover{
+    background-color: var(--corPath)!important;
+    color: white!important;
+    box-shadow: var(--sombra);
+    border-bottom: 1px solid black;
+}
+button.removerInscricao{
+    background-color: red;
+    border: none;
+    color: white;
+    display: none;
+    padding: 5px;
+    width: 18%;
+    height: 100%;
+    font-size: 1.5em;
+    transition: 40ms;
+    box-shadow: var(--sombra);
+}
+button.removerInscricao:hover{
+    border: 2px solid black;
+    color: black;
+    font-weight: bold;
+}
+
+/* ------------------------------------------ */
+#sectionMetasVazia{
+    display: block;
+}
+#divAdicionarMetas{
+    display: none;
+}
+.metaItem{
+    width: 100%;
+    color: var(--corLetra2);
+    border: 1px solid var(--corApenasTemaClaro);
+    border-radius: 4px;
+    background-color: var(--itemAtivado);
+    margin-bottom: 10px;
+    padding: 22px 12px;
+    display: flex;
+    flex-direction: column;
+    transition: 550ms;
+    box-shadow: var(--sombra);
+}
+.metaItem:hover{
+    /* background-color: #7272726b; */
+    border: 2px solid var(--corLetra2);
+}
+
+.metaHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.metaItemValores{
+    justify-content: center;
+    text-align: end;
+}
+.metaItemMeta{
+    margin-top: 0!important;
+    margin-bottom: 0!important;
+}
+
+.metaItemTitulo, .metaItemMeta{
+    color: var(--corLetra2);
+    font-size: 1.3em;
+    font-weight: bold;
+}
+.metaItemRestante{
+    color: gray;
+    font-size: 0.9em;
+    margin-bottom: .25rem!important;
+}
+
+.progress{
+    border: 1px solid var(--corLetra2);
+}
+
+.divMetaBotoes{
+    display: none;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.divMetaBotoes button{
+    border: none;
+    color: black;
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    width: 45%;
+    border-radius: 5px;
+    margin: 20px 10px 0px 10px;
+    height: 100%;
+    font-size: 1.5em;
+    box-shadow: var(--sombra);
+}
+button.removerMeta{
+    background-color: red;
+
+}
+button.editarMeta{
+    background-color: rgb(221, 221, 221);
+}
+button.removerMeta:hover, button.editarMeta:hover{
+    border: 2px solid var(--corLetra2);
+    font-weight: bold;
+}
+
+/* ------------------------------------------ */
+
+button.flutuante{
+    position: absolute;
+    background-color: var(--corTema);
+    color: white;
+    cursor: pointer;
+    border: none;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 2.3em;
+}
+button#hamburguerBtn{
+    background: none;
+    top: 20px;
+    left: 20px;
+    font-size: 2em;
+} 
+button#tema {
+    background: none;
+    top: 20px;
+    right: 20px;
+    font-size: 1.4em;
+}
+button#add{
+    background-color: var(--corTema);
+    color: white;
+    bottom: 20px;
+    right: 20px;
+    font-size: 2.3em;
+    z-index: 2;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.397);
+}
+button#add:hover{
+    border: 2px solid var(--corLetra2);
+}
+button#add:disabled {
+    border-color: gray;
+    cursor: auto;
+    background-color: grey;
+    color: white;
+    opacity: 0.8;
+}
+
+
+/* div para adicionar li na tela: */
+/* ------------------------------------------------------ */
+#divAdd{
+    border: 3px solid black;
+    border-bottom: none;
+    border-radius: 25px 25px 0px 0px;
+    box-sizing: border-box;
+    position: absolute;
+    bottom: -100%;
+    height: 75%;
+    width: 100%;
+    z-index: 10;
+    background-color: var(--corFundo2);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 50px 20px;
+    transition: 500ms;
+    transition-timing-function: ease-in-out;
+}
+#divAdd.active{
+    bottom: 0px;
+}
+#divAdd h1{
+    color: var(--corLetra2);
+    font-weight: bold;
+}
+#divContabilizarEmMetas{
+    display: flex;
+    width: inherit;
+    padding: 5px;
+}
+#divContabilizarEmMetas p{
+    width: max-content;
+    font-weight: bold;
+    font-size: 1.4em;
+    color: var(--corLetra2);
+}
+#contabilizarEmMetas{
+    display: none;
+ }
+#contabilizarEmMetas + label{
+    background-color: rgb(220 220 220);
+    position: relative;
+    width: 60px;
+    height: 24px;
+    margin-left: 13px;
+    border: 1px solid black;
+    border-radius: 12px;
+    text-align: center;
+    transition: 500ms;
+}
+#contabilizarEmMetas:checked + label{
+   background-color: #49c545;
+
+}
+#contabilizarEmMetas + label::before{
+    content: "";
+    padding: 5px;
+    border: 1px solid black;
+    background-color: white;
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    width: 40%;
+    height: 90%;
+    border-radius: 50%;
+    transition: 500ms;
+    box-shadow: var(--sombra);
+}
+#contabilizarEmMetas:checked + label::before{
+    left: 53%;
+}
+
+.dropdown-toggle, #ganhoTitulo{
+    border-radius: 18px;
+    background-color: #ff5252;
+    color: white;
+    font-size: 1em;
+    text-transform: capitalize;
+    font-weight: bold;
+    align-self: center;
+}
+#ganhoTitulo{
+    background-color: #49c545;
+}
+p#ganhoTitulo{
+    width: 126px;
+   height: 38px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+.dropdown-menu{
+    border-radius: 18px;
+    margin-bottom: 10px;
+}
+.dropdown-menu li{
+    border-bottom: 1px solid rgba(128, 128, 128, 0.164);
+    font-size: 0.8em;
+}
+a.dropdown-item{
+    font-weight: bold;
+}
+.dropdown-menu a.active, .dropdown-menu a:hover{
+    background-color: #ff5252;
+    color: white;
+}
+#divAdd > div#escolherGastoGanho{
+    background-color: rgb(236, 235, 235);
+    margin: 20px 0px 8px 0px;
+    border-radius: 20px;
+    width: 235px;
+    height: 35px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+#escolherGastoGanho input[type="radio"]{
+    display: none;
+}
+#escolherGastoGanho label{
+    border-radius: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: #ff5252;
+    background-color: rgb(236, 235, 235);
+    font-size: 1em;
+    text-transform: uppercase;
+    width: 50%;
+    height: 100%;
+    font-weight: bold;
+    transition: all 300ms;
+}
+#escolherGastoGanho label[for="ganho"]{
+    color: #49c545;
+}
+#escolherGastoGanho > input[type="radio"]:checked + label{
+    cursor: auto;
+    color: white;
+    background-color: #ff5252;
+}
+#escolherGastoGanho > input[type="radio"]:checked + label[for="ganho"]{
+    background-color: #49c545;
+    color: white;
+}
+p.inputDescricao{
+    align-self: flex-start;
+    font-size: 1.3em;
+    color: var(--corLetra);
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+#divAdd input{
+    align-self: flex-start;
+    color: var(--corLetra);
+    background-color: gainsboro;
+    border: 3px solid gainsboro;
+    border-radius: 18px;
+    padding: 16px;
+    font-size: 1.5em;
+    height: 30px;
+    width: 70%;
+    outline: none;
+    margin: 0px 0px 10px 0px;
+    text-shadow: (0px 1px 1px black);
+}
+input#itemValor{
+    color: #ff5252;
+}
+#divAdd input:focus{
+    border-color: black;
+}
+#divAdd input#itemNome{
+    color: gray;
+}
+#divAdd input#itemNome:focus{
+    color: black;
+    border-color: black;
+}
+#divAdd button#adicionar{
+    border: none;
+    border-radius: 20px;
+    height: 45px;
+    width: 100%;
+    background-color: #ff5252;
+    color: white;
+    align-self: center;
+    cursor: pointer;
+    font-size: 1.5em;
+    margin: 15px 0px 0px 0px; 
+}
+#divAdd button#adicionar:hover{
+    border: 3px solid var(--corLetra2);
+}
+#divAdd button#fechar{
+    color: var(--corLetra2);
+    position: absolute;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 2em;
+    top: 18px;
+    right: 18px;
+    width: 35px;
+    height: 35px;
+    transition: 500ms;
+    text-shadow: var(--sombra);
+}
+button.fecharAba{
+    color: var(--corLetra2);
+    position: absolute;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 2em;
+    width: 35px;
+    height: 35px;
+    transition: 500ms;
+    text-shadow: var(--sombra);
+}
+button#fechar:hover{
+    color: red;
+}
+/* ------------------------------------------------------ */
+
+div#hamburguer{
+    position: absolute;
+    top: 0;
+    left: -50%;
+    height: 100%;
+    width: 50%;
+    background-color: var(--corFundo2);
+    border-right: 2px solid black;
+    z-index: 100;
+}
+div#hamburguer.active{
+    left: 0%;
+}
+#fecharHamburguer{
+    top: 5;
+    right: 5px;
+    font-size: 1.3em;
+}
+#hamburguer > header{
+    color: var(--corLetra2);
+    padding: 1.3rem 0.7rem 0em 0.7em;
+}
+#hamburguer h5{
+    font-weight: bold;
+    margin-bottom: 0;
+}
+#betaMsg{
+    font-weight: bold;
+    margin-bottom: 10px!important;
+}
+#hamburguer p{
+    margin-bottom: 3px;
+}
+nav.nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+}
+div#hamburguer a.nav-link{
+    width: 100%;
+    margin-bottom: 2px;
+    color: var(--corLetra2);
+    text-align: left;
+    display: flex;
+    align-items: center;
+    transition: 250ms;
+}
+div#hamburguer a.nav-config-1:hover, div#hamburguer a.nav-config-1:first-child{
+    background-color: var(--corTema);
+    color: white;
+}
+div#hamburguer a.nav-config-2:hover, div#hamburguer a.nav-config-2:first-child{
+    background-color: #ff5252!important;
+    color: white;
+}
+/* ------------------------------------------------------ */
+
+/* ------------------------------------------------------ */
+div#configuracoes{
+    position: absolute;
+    left: 50%;
+    top: -30%;
+    transform: translate(-50%, -30%);
+    width: 70%;
+     height: 35%;
+     padding: 30px;
+     display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 15px;
+    background-color: var(--corFundo);
+    border: 3px solid var(--corLetra);
+    transition: 700ms;
+    z-index: 10;
+}
+div#configuracoes.active{
+    top: 30%;
+}
+div#configuracoes h1, div#configuracoes h3{
+    color: var(--corLetra2);
+}
+button#fecharConfiguracao{
+    background-color: white;
+    border-radius: 50%;
+}
+.btn-close{
+    position: absolute;
+    right: 15px;
+    top: 13px;
+}
+
+.corLabelDiv input[type="radio"]{
+    display: none;
+}
+.corLabelDiv label{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin: 0px 10px;
+    transition: 1s;
+}
+.corLabelDiv input[type="radio"]:checked + label::before{
+    opacity: 1!important; 
+}
+.corLabelDiv input[type="radio"] + label::before{
+    content: "X";
+    color: var(--corFundo);
+    font-weight: bold;
+    text-align: center;
+    opacity: 0;
+}
+#c1 + label{
+    background-color: #7852ff;
+}
+#c2 + label{
+    background-color: #ff5252;
+}
+#c3 + label{
+    background-color: #39b939;
+}
+
+/* Popup e aba Sobre----------------------------------------------- */
+#popup, #abaSobre{
+    position: absolute;
+    left: 50%;
+    top: -60%;
+    height: fit-content;
+    padding: 8px;
+    border-radius: 10px;
+    background-color: var(--corFundo);
+    border: 3px solid var(--corLetra);
+    transition: 700ms;
+    z-index: 10;
+    text-align: center;
+    font-weight: bold;
+} 
+#popup.active, #abaSobre.active{
+    top: 40%;
+}
+div#abaSobre{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    transform: translate(-50%, -35%);
+    width: 90%;
+}
+button#fecharAbaSobre{
+    background-color: white;
+    border-radius: 50%;
+}
+#abaSobre a{
+    align-self: baseline;
+    text-indent: 15px;
+}
+#abaSobre p{
+    align-self: baseline;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    color: rgb(114, 113, 113);
+}
+#popup{
+    border-top: 6px solid #ff5252;
+    transform: translate(-50%, -30%);
+    width: 70%;
+
+}
+#popup h3, #abaSobre h3{
+    color: var(--corLetra2);
+    font-weight: bold;
+}
+#popup p{
+    color: var(--corLetra2);
+}
+/* ------------------------------------------------------ */
+*::-webkit-scrollbar{
+    width: 12px;
+}
+*::-webkit-scrollbar-thumb{
+    background-color: rgba(128, 128, 128, 0.384);
+    border: 4px solid var(--corFundo);
+    border-top: 10px solid var(--corFundo);
+    border-bottom: 10px solid var(--corFundo);
+    border-radius: 5px;
+}
+img{
+    display: block;
+    margin: 15px auto;
+    width: 250px;
+    opacity: 0.7;
+}
+
+@media screen and (max-width: 400px) {
+    div#meuContainer {
+        height: 100%;
+    }
+    div#valorDiv > h1#valorTela{
+        font-size: 3em;
+    }
+    div#total h2 {
+        font-size: 1.5em;
+    }
+    p.aviso{
+       font-size: 1.3em; 
+    }
+    img{
+        width: 230px;
+    }
+    .lista li p{
+        font-size: 1em;
+    }
+    li p.nome{
+       font-size: 0.9em;
+    }
+    .lista li p.classe{
+        font-size: 0.7em;
+    }
+    button#add{
+        position: fixed;
+        width: 50px;
+        height: 50px;
+        font-size: 2em;
+    }
+    #divAdd{
+        height: 77%;
+    }
+    #divAdd button#adicionar{
+        font-size: 1.3em;
+    }
+    svg{
+        bottom: 0%;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    div#total h2{
+        font-size: 1.6em;
+    }
+    #valorTela{
+        font-size: 3.1em!important;
+    }
+
+    button#hamburguerBtn{
+        font-size: 1.5em;
+    }
+    button#tema{
+        font-size: 1.3em;
+    }
+
+    nav{
+        margin-top: 14px;
+    }
+    nav > label{
+        font-size: 1.23em;
+    }
+    nav > input[type="radio"]:checked + label, nav > label:hover {
+        font-size: 1.23em;
+    }
+
+    li p.nome{
+        font-size: 0.84em;
+    }
+    li p.classe {
+        font-size: 0.54em;
+        font-weight: bold;
+    }
+
+    button#add{
+        font-size: 2.1em;
+        width: 50px;
+        height: 50px;
+    }
+
+    #divAdd{
+        height: 82%;
+    }
+
+    .dropdown-toggle, #ganhoTitulo {
+        font-size: 0.95em;
+    }
+
+    div#abaSobre{
+        width: 95%;
+    }
+}
+
+@media screen and (max-width: 376px){
+    li p.nome {
+        font-size: 0.75em!important;
+    }
+    .lista li p {
+        font-size: 0.87em;
+    }
+    li p.classe {
+        font-size: 0.53em;
+        font-weight: bold;
+    }
+
+
+    button.removerInscricao{
+        width: 23%;
+    }
+
+
+    .metaItemTitulo, .metaItemMeta {
+        font-size: 1.1em;
+    }
+
+
+    #divContabilizarEmMetas p {
+        font-size: 1.2em;
+    }
+    #divAdd button#adicionar {
+        font-weight: bold;
+    }
+
+
+    div#hamburguer{
+        width: 60%;
+        left: -70%;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    div#total h2 {
+        font-size: 1.45em;
+    }
+    #valorTela {
+        font-size: 2.9em!important;
+    }
+
+
+    .metaItemTitulo, .metaItemMeta {
+        font-size: 1em;
+    }
+
+
+    li p.nome {
+        font-size: 0.63em!important;
+    }
+    .lista li p {
+        font-size: 0.7em;
+    }
+    .lista li p.classe {
+        font-size: 0.45em;
+    }
+
+
+    #divContabilizarEmMetas p {
+        font-size: 1.08em;
+    }
+
+
+    #popup{
+        width: 80%;
+    }
+
+}
+@media screen and (min-width: 700px) and (max-width: 1050px) and (min-height: 1000px){
+
+    div#meuContainer{
+        max-width: 100%;
+        min-width: 100%;
+    }
+    #popup{
+        border-top: 14px solid #ff5252;
+        width: 80%;
+    }
+    #popup h3{
+        font-size: 3.5em;
+    }
+    #popup p{
+        font-size: 1.9em;
+    }
+    #popup button{
+        font-size: 2em;
+        margin: 0px 10px;
+    }
+    .alert{
+        font-size: 2.5em;
+        padding: 20px;
+    }
+
+
+    /* Botões flutuantes */
+    button.flutuante{
+        width: 90px;
+        height: 90px;
+    }
+    button#hamburguerBtn{
+        font-size: 4em;
+    }
+    button#tema{
+        font-size: 2.7em;
+    }
+    button#add{
+        font-size: 3.8em;
+    }
+
+    /* Aba adicionar */
+    #divAdd{
+        height: 72%;
+    }
+    #divAdd button#fechar{
+        font-size: 3em;
+        width: 55px;
+        height: 55px;
+    }
+    #divAdd h1{
+        font-size: 4em;
+    }
+    #divContabilizarEmMetas p {
+        font-size: 2.4em;
+    }
+    #contabilizarEmMetas + label{
+        width: 100px;
+        height: 40px;
+        border-radius: 20px;
+    }
+    #divAdd > div#escolherGastoGanho {
+        border-radius: 30px;
+        width: 390px;
+        height: 50px;
+        font-size: 1.8em;
+        font-weight: bold;
+    }
+    .dropdown-toggle, #ganhoTitulo{
+        font-size: 1.7em;
+        border-radius: 25px;
+    }
+    p#ganhoTitulo {
+        width: 210px;
+        height: 56px;
+    }
+    #divAdd input{
+        height: 55px;
+        border-radius: 40px;
+        font-size: 2.3em;
+    }
+    p.inputDescricao {
+        font-size: 2.3em;
+    }
+    #divAdd button#adicionar{
+        height: 60px;
+        font-size: 2.4em;
+        font-weight: bold;
+    }
+
+
+    /* Aba configurações */
+    button#fecharConfiguracao{
+        font-size: 1.7em;
+    }
+    div#configuracoes h1{
+        font-size: 4em;
+    }
+    div#configuracoes h3{
+        font-size: 3.1em;
+    }
+    .corLabelDiv label{
+    width: 60px;
+    height: 60px;
+    font-size: 2em;
+    }
+
+    /* Aba sobre */
+    #abaSobre h3{
+        font-size: 3em;
+    }
+    button #fecharAbaSobre{
+        font-size: 2em;
+    }
+    #abaSobre p{
+        font-size: 2.3em;
+    }
+    #abaSobre a{
+        font-size: 1.9em;
+    }
+
+    /* Header */
+    div#total h2 {
+        font-size: 4em;
+    }
+    #valorTela {
+        font-size: 5.5em!important;
+    }
+
+    nav > label{
+        font-size: 2.8em;
+    }
+    nav > input[type="radio"]:checked + label, nav > label:hover{
+        font-size: 3.1em;
+    }
+
+    /* Side bar */
+    div#hamburguer{
+        left: -70%;
+        width: 55%;
+    }
+    #hamburguer h5{
+        font-size: 2.6em;
+    }
+    #hamburguer p{
+        font-size: 2em;
+    }
+    #fecharHamburguer{
+        right: 15px;
+        font-size: 2.3em;
+    }
+
+
+    div#hamburguer a.nav-link{
+        font-size: 2.3em;
+    }
+
+    /* Meta section */
+    .metaItem{
+        min-height: 190px;
+    }
+    .metaItemTitulo, .metaItemMeta {
+        font-size: 2.7em;
+    }
+    .metaItemRestante{
+        font-size: 2em;
+    }
+    .divMetaBotoes button{
+        font-size: 2.7em;
+        padding: 15px;
+    }
+
+
+    /* Lista section */
+    h3.dataDaLista{
+        font-size: 3.1em;
+    }
+    ul.lista li{
+        height: 130px;
+        border-left: 8px solid var(--corPath);
+    }
+    li p.nome {
+        font-size: 1.9em!important;
+    }
+    .lista li p {
+        font-size: 2.1em;
+    }
+    .lista li p.classe {
+       font-size: 1.45em;
+    }
+
+    /* Inscrições section */
+    ul#listaAdicionarInscricoes li{
+        height: 130px;
+    }
+    #inscricoesHeader{
+        border-radius: 12px;
+        padding: 40px;
+    }
+    #inscricoesHeader h3{
+        font-size: 1.4em;
+        font-weight: bold;
+    }
+    .inscricoesConteudo h4{
+        font-size: 2.3em;
+    }
+    .inscricoesConteudo p{
+        font-size: 2em;
+    }
+    .removerInscricao i{
+        font-size: 1.8em;
+    }
+
+
+}

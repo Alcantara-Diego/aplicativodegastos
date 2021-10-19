@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/Google-Noto-Emoji-Objects-62876-money-bag.ico" type="image/x-icon">
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <!-- meu css -->
+    <link rel="stylesheet" href="style.css">
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+    <title>Expense Tracker</title>
+</head>
+<body>
+    <!-- Fundo em telas grandes -->
+    <div id="background">
+        <svg id="blob1" class="blobSvg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <path class="blob" fill="#FF5252" d="M50.7,-42.3C63.9,-23.8,71.6,-2.9,66.2,12.8C60.8,28.5,42.3,38.9,23.8,46.9C5.2,54.9,-13.3,60.5,-32.1,55.7C-50.9,50.8,-69.9,35.6,-76.2,15.3C-82.5,-4.9,-76,-30.2,-61.2,-49C-46.3,-67.8,-23.2,-80.1,-2.2,-78.4C18.7,-76.6,37.4,-60.7,50.7,-42.3Z" transform="translate(100 100)" />
+        </svg>
+        <svg id="blob2" class="blobSvg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <path class="blob" fill="#FF5252" d="M50.7,-42.3C63.9,-23.8,71.6,-2.9,66.2,12.8C60.8,28.5,42.3,38.9,23.8,46.9C5.2,54.9,-13.3,60.5,-32.1,55.7C-50.9,50.8,-69.9,35.6,-76.2,15.3C-82.5,-4.9,-76,-30.2,-61.2,-49C-46.3,-67.8,-23.2,-80.1,-2.2,-78.4C18.7,-76.6,37.4,-60.7,50.7,-42.3Z" transform="translate(100 100)" />
+        </svg>
+
+        <i class="fas fa-money-bill-wave"></i>
+        <h2>Expense Tracker</h2>
+    </div>
+    <!-- Fechando fundo em telas grandes -->
+    
+    <!-- Container -->
+    <div id="meuContainer">
+        <!-- overlay div -->
+        <div class="overlay"></div>
+        <!-- Fechando overlay div -->
+
+        <!-- alertas ----------------------------------->
+        <div class="alert alert-light" role="alert">
+            <i class="fas fa-moon"></i>
+            Modo Noturno ativado 
+          </div>
+
+          <div class="alert alert-dark" role="alert">
+            <i class="fas fa-moon"></i>
+            Modo Noturno desativado
+          </div>
+
+          <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+            <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+            </symbol>
+            <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+              </symbol>
+              <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+              </symbol>
+            </svg>
+          </svg>
+          <div class="alert alert-success d-flex align-items-center" role="alert">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+            <div>
+              Item adicionado com sucesso
+            </div>
+          </div>
+          <div class="alert alert-danger d-flex align-items-center" role="alert">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+            <div>
+                Desative o Modo Noturno para mudar o tema
+            </div>
+          </div>
+          <!--fechando alertas -------------------------------->
+
+          <!-- abrindo header -->
+        <header id="headerPrincipal">
+
+            <div id="total">
+                <h2>Total</h2>
+                <div id="valorDiv">
+                    <h1 id="valorTela">$0,00</h1>
+                </div>
+            </div>
+            <nav id="sectionNav">
+                <input type="radio" name="option" id="inscricoes">
+                <label for="inscricoes">Inscrições</label>
+
+                <input type="radio" name="option" id="listaCompleta" checked>
+                <label for="listaCompleta">lista</label>
+
+                <input type="radio" name="option" id="metas">
+                <label for="metas">Metas</label>
+            </nav>
+        </header>
+        <!-- fechando header -->
+
+        <!-- abrindo conteúdo principal  -->
+        <main>
+            <!-- abrindo inscrições -->
+            <section id="sectionInscricoes" class="conteudoPrincipal">
+                <div id="inscricoesHeader" class="w-100 flex-row justify-content-center align-items-center">
+                    <h3 class="my-0"><i class="fas fa-info-circle"></i> Você paga R$0,00 por mês em inscrições</h3>
+                </div>
+
+                <div id="sectionInscricoesVazia">
+                    <p class="aviso">Registre seus planos mensais aqui</p>
+                    <img class="ilustracao" src="assets/desenho4.png" alt="">
+                </div>
+
+                <ul id="listaAdicionarInscricoes" class="my-4 w-100">
+                    
+                </ul>
+
+            </section>
+            <!-- fechando inscrições -->
+
+            <!-- abrindo lista -->
+            <section id="sectionLista" class="conteudoPrincipal">
+                <p class="aviso">Lista vazia :( <br>  Adicione algum gasto ou ganho para calcular</p>
+                <img class="ilustracao" src="assets/desenho1.png" alt="">
+                <h3 class="dataDaLista" style="display: none;">Hoje</h3>
+                <ul id="lista" class="lista">
+                </ul>
+            </section>
+            <!-- fechando lista -->
+
+            <!-- abrindo metas -->
+            <section id="sectionMetas" class="conteudoPrincipal">
+                <div id="sectionMetasVazia">
+                    <p class="aviso">Chegue mais perto dos seus objetivos! <br>  Crie uma nova meta</p>
+                    <img class="ilustracao" src="assets/desenho5.png" alt="">
+                </div>
+
+                <div id="divAdicionarMetas" class="my-2 w-100">
+
+                </div>
+            </section>
+            <!-- fechando metas -->
+
+        </main>
+        <!-- fechando conteúdo principal -->
+
+        <!-- abrindo aba para adicionar novo item -->
+        <div id="divAdd">
+
+            <h1 id="tituloAbaAdicionar" class="my-2">Nova Inscrição</h1>
+
+            <!-- abrindo div contabilizar em meta -->
+            <div id="divContabilizarEmMetas" class="flex-row justify-content-center
+            align-items-center mt-4 mb-1">
+                <p class="mb-0">Contabilizar em metas: </p>
+                <input type="checkbox" name="contabilizarEmMetas" id="contabilizarEmMetas" checked>
+                <label for="contabilizarEmMetas"></label>
+            </div>
+            <!-- fechando div contabilizar em meta -->
+
+            <!-- abrindo gasto ganho label -->
+            <div id="escolherGastoGanho">
+                <input type="radio" name="subOuAdd" id="gasto" checked>
+                <label for="gasto">gasto</label>
+
+                <input type="radio" name="subOuAdd" id="ganho">
+                <label for="ganho">ganho</label>
+            </div>
+            <!-- fechando gasto ganho label -->
+
+            <!-- abrindo opções dropdown -->
+            <div class="dropdown my-2 align-self-center">
+                <button class="btn dropdown-toggle" type="button" id="dropdownItemClasse" data-bs-toggle="dropdown" aria-expanded="false">
+                    item classe
+                </button>
+                <ul class="dropdown-menu px-1" aria-labelledby="dropdownItemClasse">
+                    <li ><a class="dropdown-item tipoApenasMeta" href="#">Todas categorias <i class="fas fa-exclamation-triangle"></i> </a></li>
+                    <li><a id="padraoBtn" class="dropdown-item" href="#">Padrão <i class="fas fa-dollar-sign"></i> </a></li>
+                    <li><a id="alimentacaoBtn" class="dropdown-item" href="#">Alimentação <i class="fas fa-utensils"></i></a></li>
+                    <li><a id="transporteBtn" class="dropdown-item" href="#">Transporte  <i class="fas fa-bus"></i></a></li>
+                    <li><a id="estudosBtn" class="dropdown-item" href="#">Estudos  <i class="fas fa-graduation-cap"></i></a></li>
+                    <li><a id="roupasBtn" class="dropdown-item" href="#">Roupas  <i class="fas fa-tshirt"></i></a></li>
+                    <li><a id="saudeBtn" class="dropdown-item" href="#">Saúde  <i class="fas fa-heart"></i></a></li>
+                    <li><a id="shoppingBtn" class="dropdown-item" href="#">Shopping  <i class="fas fa-shopping-bag"></i></a></li>
+                    <li><a id="entretenimentoBtn" class="dropdown-item" href="#">Entretenimento  <i class="fas fa-gamepad"></i></a></li>
+                    <li><a id="supermercadoBtn" class="dropdown-item" href="#">Supermercado  <i class="fas fa-shopping-basket"></i></a></li>
+                </ul>
+            </div>
+            <!-- fechando opções dropdown -->
+
+            <p id="ganhoTitulo" class="p-1">ganho <i class="fas fa-star"></i></p>
+
+            
+                
+            <!-- inputs -->
+            <p class="inputDescricao">Nome:</p>
+            <input type="text" id="itemNome"
+            name="itemNome" maxlength="18">
+            <p class="inputDescricao">Valor R$:</p>
+            <input type="number" id="itemValor" name="itemValor" min="0" max="9999" step="00.01" size="4" value="1.00">
+
+            <!-- botão -->
+            <button id="adicionar">adicionar</button>
+      
+            
+            <button id="fechar"><i class="far fa-times-circle"></i></button>
+
+        </div>
+        <!-- fechando aba para adicionar novo item -->
+
+        <!-- abrindo hamburguer nav -->
+        <div id="hamburguer" class="p-2">
+            <button id="fecharHamburguer" class="fecharAba"><i class="fas fa-bars"></i></button>
+            <header class="my-2">
+                <h5>Expense Tracker</h5>
+                <p id="betaMsg">Beta</p>
+                <p>Sexta-feira</p>
+                <p>20 de agosto, 2021</p>
+            </header>
+            <hr>
+            <nav class="nav nav-pills nav-justified flex-column my-2 align-items-center">
+                <a id="homeBtn" class="nav-link nav-config-1" aria-current="page" href="#"><i class="fas fa-home"></i>   Home</a>
+                <a id="modoNoturnoBtn" class="nav-link nav-config-1" href="#"><i class="fas fa-moon"></i>Modo Noturno</a>
+                <a id="configBtn" class="nav-link nav-config-1" href="#"><i class="fas fa-sliders-h"></i>   Configurações</a>
+                <a id="sobreBtn" class="nav-link nav-config-1" href="#"><i class="fas fa-info-circle"></i>   Sobre</a>
+                
+              </nav>
+        </div>
+        <!-- fechando hamburguer nav -->
+
+        <!-- abrindo aba configurações -->
+        <div id="configuracoes">
+            <button type="button"  id="fecharConfiguracao" class="btn-close" aria-label="Close"></button>
+            <h1>Configurações</h1>
+
+            <div class="w-100 h-70 d-flex flex-column justify-content-center align-items-center">
+
+                <h3 class="my-2">Cor do tema</h3>
+
+                <div class="corLabelDiv d-flex flex-row justify-content-center align-items-center">
+
+                    <input type="radio" name="corTema" id="c1">
+                    <label for="c1"></label>
+
+                    <input type="radio" name="corTema" id="c2" checked>
+                    <label for="c2"></label>
+
+                    <input type="radio" name="corTema" id="c3">
+                    <label for="c3"></label>
+                </div>
+
+            </div>
+        </div>
+        <!-- fechando aba configurações -->
+
+        <!-- abrindo aba popup -->
+        <div id="popup">
+            <h3 class="my-1">Tem certeza?</h3>
+            <hr class="mt-1">
+            <p class="mt-3">Itens removidos não podem ser restaurados!</p>
+            <div class="mt-3">
+                <button type="button" id="popupBtnCancelar" class="btn btn-outline-secondary">Cancelar</button>
+                <button type="button" id="popupBtnRemover" class="btn btn-danger">Remover</button>
+            </div>
+        </div>
+        <!-- fechando aba popup -->
+
+        <!-- abrindo aba sobre -->
+        <div id="abaSobre">
+            <button type="button"  id="fecharAbaSobre" class="btn-close" aria-label="Close"></button>
+            <h3 class="mt-3">Links das ilustrações</h3>
+            <p>ilustração 1:</p>
+            <a href="https://www.streamlinehq.com" target="_blank">Free CHASING MONEY PNG illustration by Streamline</a>
+            <p>ilustração 2:</p>
+            <a href="https://www.streamlinehq.com" target="_blank">Free SAVING MONEY 2 PNG illustration by Streamline</a>
+            <p>ilustração 3:</p>
+            <a href="https://www.streamlinehq.com" target="_blank">Free Saving Money 1 PNG illustration by Streamline</a>
+            <p>ilustração 4:</p>
+            <a href="https://www.streamlinehq.com" target="_blank">Free Chasing Money 1 PNG illustration by Streamline</a>
+            <p>ilustração 5:</p>
+            <a href="https://www.streamlinehq.com" target="_blank">Free Becoming Rich 3 PNG illustration by Streamline</a>
+        </div>
+        <!-- fechando aba sobre -->
+
+
+        <button class="flutuante" id="hamburguerBtn"><i class="fas fa-bars"></i></button>
+        <abbr title="Tema claro/Tema escuro"><button class="flutuante" id="tema"><i class="fas fa-moon"></i></button></abbr>
+
+        <abbr title="Adicionar item"><button class="flutuante" id="add">+</button></abbr>
+
+        <!-- decoração do rodape -->
+        <svg id="rodape" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#ff5252" fill-opacity="1" d="M0,192L80,170.7C160,149,320,107,480,112C640,117,800,171,960,186.7C1120,203,1280,181,1360,170.7L1440,160L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path></svg>
+        <!-- fechando decoração do rodape -->
+    </div>
+    <!-- fechando container -->
+
+
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+    <!-- meu script -->
+    <script src="script.js"></script>
+</body>
+</html>
