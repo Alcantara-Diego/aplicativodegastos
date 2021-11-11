@@ -456,16 +456,19 @@ var addBtn = document.getElementById("add");
 function mudarAbaAdicionar(){
     //se a aba for fechada, o label gasto ganho deve voltar ao padrão para não bugar outrar funções
     if(this == fecharBtn){
-        atualizarGastoGanho("gasto checked");
+         //O timeout ajuda a não bugar a animação para o usuário
+         setTimeout(()=>{
+            atualizarGastoGanho("gasto checked");
+        }, 500);
     }
 
     let adc = document.getElementById("adicionar")
     if (this == fecharBtn || this == addBtn || this == adc){ 
         $("#divAdd")[0].classList.toggle("active");
         if(this == addBtn){
-            //checa se a aba inscrição esta selecionada, e se tiver foca no input de nome 
-            escolherFoco();
             $(".overlay").fadeIn(200)
+            //checa se a aba inscrição esta selecionada, e se tiver foca no input de nome e esconde o dropdown 
+            inscricaoConfig();
         } else {
         $(".overlay").fadeOut(200)
         }
@@ -539,9 +542,10 @@ document.getElementById("fecharAbaSobre").addEventListener("click", mudarAbaSobr
 
 // Pequenas funcionalidades  -----------------------------------------------------
 
-//checa se a aba inscrição esta selecionada, e se tiver foca no input de nome 
-function escolherFoco(){
+//checa se a aba inscrição esta selecionada, e se tiver altera o foco para o input nome e esconde o dropdown 
+function inscricaoConfig(){
     if($("#inscricoes")[0].checked){
+        $("#dropdownItemClasse").css("display", "none");
         //O timeout ajuda a não bugar a animação da aba adicionar aparecendo na tela
         setTimeout(()=>{
             $("#itemNome").focus();
@@ -601,7 +605,7 @@ function criarNovaMeta(nome, valor){
     metaIcone = icone;
 
     //adicionando o html da meta dentro da div
-    div = `<div class="metaItem" data-tipo="${metaTipo}" data-icone="${metaIcone}" data-dia="${data.dia}" data-mes="${data.mes}" data-diaNumerico="${data.diaNumerico}" data-mesNumerico="${data.mesNumerico}" data-ano="${data.ano}" data-hora="${horaMinutoSegundo}"><div class="metaHeader"><p class="metaItemTitulo">${nome} <i class="${icone}"></i></p><div class="metaItemValores"><p class="metaItemMeta text-${classeCor}">R$${numeroFormatado}</p><p class="metaItemRestante">Restante R$${valor}</p></div></div><div class="progress"><div class="progress-bar bg-${classeCor}" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div></div><div class="divMetaBotoes"><button class="removerMeta"><i class="fas fa-trash-alt"></i></button><button class="editarMeta"><i class="fas fa-lock-open"></i></button><div></div>`
+    div = `<div class="metaItem" data-tipo="${metaTipo}" data-icone="${metaIcone}" data-dia="${data.dia}" data-mes="${data.mes}" data-diaNumerico="${data.diaNumerico}" data-mesNumerico="${data.mesNumerico}" data-ano="${data.ano}" data-hora="${horaMinutoSegundo}"><div class="metaHeader"><p class="metaItemTitulo">${nome} <i class="${icone}"></i></p><div class="metaItemValores"><p class="metaItemMeta text-${classeCor}">R$${numeroFormatado}</p><p class="metaItemRestante">Restante R$${valor}</p></div></div><div class="progress"><div class="progress-bar bg-${classeCor}" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div></div><div class="divMetaBotoes"><button class="editarMeta"><i class="fas fa-lock-open"></i></button><button class="removerMeta"><i class="fas fa-trash-alt"></i></button><div></div>`
 
 
     $("#divAdicionarMetas").append(div);

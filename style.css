@@ -468,14 +468,14 @@ button.flutuante{
 }
 button#hamburguerBtn{
     background: none;
-    top: 20px;
-    left: 20px;
+    top: 0.5%;
+    left: 0.5%;
     font-size: 2em;
 } 
 button#tema {
     background: none;
-    top: 20px;
-    right: 20px;
+    top: 0.5%;
+    right: 0.5%;
     font-size: 1.4em;
 }
 button#add{
@@ -860,7 +860,7 @@ button#fecharConfiguracao{
 #popup, #abaSobre{
     position: absolute;
     left: 50%;
-    top: -60%;
+    top: -95%;
     height: fit-content;
     padding: 8px;
     border-radius: 10px;
@@ -877,9 +877,11 @@ button#fecharConfiguracao{
 div#abaSobre{
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: flex-start;
     transform: translate(-50%, -35%);
     width: 90%;
+    height: 50%;
+    overflow: auto;
 }
 button#fecharAbaSobre{
     background-color: white;
@@ -888,6 +890,9 @@ button#fecharAbaSobre{
 #abaSobre a{
     align-self: baseline;
     text-indent: 15px;
+}
+#abaSobre a > i{
+    text-indent: 3px;
 }
 #abaSobre p{
     align-self: baseline;
@@ -901,9 +906,11 @@ button#fecharAbaSobre{
     width: 70%;
 
 }
-#popup h3, #abaSobre h3{
-    color: var(--corLetra2);
+#popup h3, #abaSobre h1{
     font-weight: bold;
+}
+#popup h3, #abaSobre h1, #abaSobre h3{
+    color: var(--corLetra2);
 }
 #popup p{
     color: var(--corLetra2);
@@ -953,12 +960,12 @@ img{
     }
     button#add{
         position: fixed;
-        width: 50px;
-        height: 50px;
-        font-size: 2em;
+        width: 53px;
+        height: 53px;
+        font-size: 2.2em;
     }
     #divAdd{
-        height: 77%;
+        height: 90%;
     }
     #divAdd button#adicionar{
         font-size: 1.3em;
@@ -1001,14 +1008,8 @@ img{
         font-weight: bold;
     }
 
-    button#add{
-        font-size: 2.1em;
-        width: 50px;
-        height: 50px;
-    }
-
     #divAdd{
-        height: 82%;
+        height: 90%;
     }
 
     .dropdown-toggle, #ganhoTitulo {
