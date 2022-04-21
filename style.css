@@ -856,6 +856,16 @@ button#fecharConfiguracao{
     background-color: #39b939;
 }
 
+
+#apagarTudo{
+    color: white;
+    border-radius: 5px;
+    transition: 100ms;
+}
+#apagarTudo:hover{
+    color: black;
+}
+
 /* Popup e aba Sobre----------------------------------------------- */
 #popup, #abaSobre{
     position: absolute;

@@ -499,13 +499,20 @@ document.getElementById("homeBtn").addEventListener("click", mudarAbaHamburguer)
 document.getElementById("modoNoturnoBtn").addEventListener("click", mudarAbaHamburguer);
 document.getElementById("sobreBtn").addEventListener("click", mudarAbaHamburguer);
 
+var apagarTudoBtn = document.getElementById("apagarTudo");
 function mudarAbaConfiguracoes(){
     $("#configuracoes")[0].classList.toggle("active");
     let configBtn = document.getElementById("configBtn");
 
+    console.log(this)
     if(this == configBtn){
         $("#hamburguer")[0].classList.toggle("active");
         $(".overlay").fadeIn(200);
+    
+    } else if(this == apagarTudoBtn){
+        $(".overlay").fadeIn(200);
+        apagarTudoPopup();
+
     } else{
         $(".overlay").fadeOut(200)
     }
@@ -817,14 +824,40 @@ function atualizarRemoverMeta(){
     })
 }
 document.getElementById("popupBtnRemover").addEventListener("click", confirmarRemocao);
+
+// apagarTudo é alterado para true quando o popup é acionado pelas configurações
+var varApagarTudo = false;
+
+// Prepara o popup para apagar todos itens, metas e inscrições qunado é acionado pelas configurações
+function apagarTudoPopup(){
+    varApagarTudo = true;
+    mudarAbaPopup("mostrar");
+    
+};
+
+apagarTudoBtn.addEventListener("click", mudarAbaConfiguracoes);
+
 function confirmarRemocao(){
-    if($("#inscricoes")[0].checked){
+    if($("#inscricoes")[0].checked && !varApagarTudo){
         apagarItem("inscricao", inscricaoItem, inscricaoIndex);
-    } else if($("#metas")[0].checked){
-        apagarItem("meta", metaSelecionada, indexDaMetaSelecionada)
+
+    } else if($("#metas")[0].checked && !varApagarTudo){
+        apagarItem("meta", metaSelecionada, indexDaMetaSelecionada);
+
+    } else if(varApagarTudo){
+        // window.alert("remove all")
+        localStorage.removeItem("items");
+        localStorage.removeItem("metas");
+        localStorage.removeItem("inscricoes");
+        localStorage.setItem("total", 0);
+
+        location.reload();
+
     } else{
         window.alert("erro no confirmar remoção")
     }
+
+    apagarTudo = false;
 }
 function apagarItem(tipo, item, index){
     switch(tipo){
